@@ -1,3 +1,5 @@
+import numpy as np 
+
 
 def move(position, grid, direction, count):
     if direction in 'U D L R'.split():
@@ -11,10 +13,9 @@ def move(position, grid, direction, count):
 
 def move_cartesian(position, grid, direction, count):
     x, y = position
-    dimension = len(grid.grid)
     out_grid = np.copy(grid.grid) 
 
-    if direction == 'U':
+    if direction == 'L':
         y1 = y - 1
         y2 = y - 2
         y3 = y - 3
@@ -27,7 +28,7 @@ def move_cartesian(position, grid, direction, count):
         return position, out_grid   
 
 
-    if direction == 'D':
+    if direction == 'R':
         y1 = y + 1
         y2 = y + 2
         y3 = y + 3
@@ -40,7 +41,7 @@ def move_cartesian(position, grid, direction, count):
         return position, out_grid   
 
 
-    if direction == 'R':
+    if direction == 'D':
         x1 = x + 1
         x2 = x + 2
         x3 = x + 3
@@ -53,7 +54,7 @@ def move_cartesian(position, grid, direction, count):
         return position, out_grid   
 
 
-    if direction == 'L':
+    if direction == 'U':
         x1 = x - 1
         x2 = x - 2
         x3 = x - 3
@@ -71,7 +72,6 @@ def move_cartesian(position, grid, direction, count):
 
 def move_diagonal(position, grid, direction, count):
     x, y = position
-    dimension = len(grid.grid)
     out_grid = np.copy(grid.grid) 
 
 
@@ -81,19 +81,19 @@ def move_diagonal(position, grid, direction, count):
         y1 = y - 1
         y2 = y - 2
 
-    if direction == 'UR':
+    elif direction == 'DL':
         x1 = x + 1 
         x2 = x + 2 
         y1 = y - 1
         y2 = y - 2
 
-    if direction == 'DR':
+    elif direction == 'DR':
         x1 = x + 1 
         x2 = x + 2 
         y1 = y + 1
         y2 = y + 2
 
-    if direction == 'DL':
+    elif direction == 'UR':
         x1 = x - 1 
         x2 = x - 2 
         y1 = y + 1

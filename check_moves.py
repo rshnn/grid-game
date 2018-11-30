@@ -1,5 +1,4 @@
 
-
 def check(position, grid, direction):
     if direction in 'U D L R'.split():
         return check_cartesian(position, grid, direction)
@@ -13,8 +12,7 @@ def check_cartesian(position, grid, direction):
     x, y = position
     dimension = len(grid.grid)
 
-
-    if direction == 'U':
+    if direction == 'L':
         y1 = y - 1
         y2 = y - 2
         y3 = y - 3
@@ -27,7 +25,7 @@ def check_cartesian(position, grid, direction):
             return False 
 
 
-    if direction == 'D':
+    if direction == 'R':
         y1 = y + 1
         y2 = y + 2
         y3 = y + 3
@@ -41,7 +39,7 @@ def check_cartesian(position, grid, direction):
             return False 
 
 
-    if direction == 'R':
+    if direction == 'D':
         x1 = x + 1
         x2 = x + 2
         x3 = x + 3
@@ -55,7 +53,7 @@ def check_cartesian(position, grid, direction):
             return False 
 
 
-    if direction == 'L':
+    if direction == 'U':
         x1 = x - 1
         x2 = x - 2
         x3 = x - 3
@@ -71,10 +69,10 @@ def check_cartesian(position, grid, direction):
     else: 
         raise Exception("invalid cartesian direction")
 
-def move_diagonal(position, grid, direction):
+
+def check_diagonal(position, grid, direction):
     x, y = position
     dimension = len(grid.grid)
-
 
     if direction == 'UL':
         x1 = x - 1 
@@ -91,7 +89,7 @@ def move_diagonal(position, grid, direction):
         else: 
             return False 
 
-    if direction == 'UR':
+    if direction == 'DL':
         x1 = x + 1 
         x2 = x + 2 
         y1 = y - 1
@@ -115,14 +113,14 @@ def move_diagonal(position, grid, direction):
         if all(0 <= x < dimension for x in [x1, x2, y1, y2]):
             if all(grid.can_i_move_here(coords) for coords in [[x1, y1], [x2, y2]]):
                 return True  
-                
+
             else:
                 return False 
         else: 
             return False 
 
 
-    if direction == 'DL':
+    if direction == 'UR':
         x1 = x - 1 
         x2 = x - 2 
         y1 = y + 1
@@ -131,7 +129,7 @@ def move_diagonal(position, grid, direction):
         if all(0 <= x < dimension for x in [x1, x2, y1, y2]):
             if all(grid.can_i_move_here(coords) for coords in [[x1, y1], [x2, y2]]):
                 return True  
-                
+
             else:
                 return False 
         else: 
