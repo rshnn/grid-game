@@ -3,7 +3,7 @@ from grid import Grid
 import check_moves
 import do_moves 
 
-DIMENSION = 4
+DIMENSION = 5
 
 
 class State():
