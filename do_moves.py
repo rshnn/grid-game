@@ -16,12 +16,8 @@ def move_cartesian(position, grid, direction, count):
     out_grid = np.copy(grid.grid) 
 
     if direction == 'L':
-        y1 = y - 1
-        y2 = y - 2
         y3 = y - 3
 
-        out_grid[x, y1] = count
-        out_grid[x, y2] = count
         out_grid[x, y3] = count
         position = [x, y3]
 
@@ -29,12 +25,8 @@ def move_cartesian(position, grid, direction, count):
 
 
     if direction == 'R':
-        y1 = y + 1
-        y2 = y + 2
         y3 = y + 3
 
-        out_grid[x, y1] = count
-        out_grid[x, y2] = count
         out_grid[x, y3] = count
         position = [x, y3]
 
@@ -42,12 +34,8 @@ def move_cartesian(position, grid, direction, count):
 
 
     if direction == 'D':
-        x1 = x + 1
-        x2 = x + 2
         x3 = x + 3
 
-        out_grid[x1, y] = count
-        out_grid[x2, y] = count
         out_grid[x3, y] = count
         position = [x3, y]
 
@@ -55,12 +43,8 @@ def move_cartesian(position, grid, direction, count):
 
 
     if direction == 'U':
-        x1 = x - 1
-        x2 = x - 2
         x3 = x - 3
 
-        out_grid[x1, y] = count
-        out_grid[x2, y] = count
         out_grid[x3, y] = count
         position = [x3, y]
 
@@ -76,33 +60,24 @@ def move_diagonal(position, grid, direction, count):
 
 
     if direction == 'UL':
-        x1 = x - 1 
         x2 = x - 2 
-        y1 = y - 1
         y2 = y - 2
 
     elif direction == 'DL':
-        x1 = x + 1 
         x2 = x + 2 
-        y1 = y - 1
         y2 = y - 2
 
     elif direction == 'DR':
-        x1 = x + 1 
         x2 = x + 2 
-        y1 = y + 1
         y2 = y + 2
 
     elif direction == 'UR':
-        x1 = x - 1 
         x2 = x - 2 
-        y1 = y + 1
         y2 = y + 2
 
     else: 
         raise Exception('Invalid diagonal direction')
 
-    out_grid[x1, y1] = count
     out_grid[x2, y2] = count
     position = [x2, y2]
 

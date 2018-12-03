@@ -13,11 +13,10 @@ def check_cartesian(position, grid, direction):
     dimension = len(grid.grid)
 
     if direction == 'L':
-        y1 = y - 1
-        y2 = y - 2
-        y3 = y - 3
-        if all(0 <= y < dimension for y in [y1, y2, y3]): 
-            if all(grid.can_i_move_here([x, y]) for y in [y1, y2, y3]):
+        y1 = y - 3
+
+        if 0 <= y1 < dimension: 
+            if grid.can_i_move_here([x, y1]):
                 return True 
             else: 
                 return False 
@@ -26,13 +25,11 @@ def check_cartesian(position, grid, direction):
 
 
     if direction == 'R':
-        y1 = y + 1
-        y2 = y + 2
-        y3 = y + 3
-        if all(0 <= y < dimension for y in [y1, y2, y3]): 
-            if all(grid.can_i_move_here([x, y]) for y in [y1, y2, y3]):
-                return True   
+        y1 = y + 3
 
+        if 0 <= y1 < dimension: 
+            if grid.can_i_move_here([x, y1]):
+                return True 
             else: 
                 return False 
         else: 
@@ -40,13 +37,11 @@ def check_cartesian(position, grid, direction):
 
 
     if direction == 'D':
-        x1 = x + 1
-        x2 = x + 2
-        x3 = x + 3
-        if all(0 <= x < dimension for x in [x1, x2, x3]): 
-            if all(grid.can_i_move_here([x, y]) for x in [x1, x2, x3]):
-                return True  
+        x1 = x + 3
 
+        if 0 <= x1 < dimension: 
+            if grid.can_i_move_here([x1, y]):
+                return True 
             else: 
                 return False 
         else: 
@@ -54,13 +49,11 @@ def check_cartesian(position, grid, direction):
 
 
     if direction == 'U':
-        x1 = x - 1
-        x2 = x - 2
-        x3 = x - 3
-        if all(0 <= x < dimension for x in [x1, x2, x3]): 
-            if all(grid.can_i_move_here([x, y]) for x in [x1, x2, x3]):
-                return True   
+        x1 = x - 3
 
+        if 0 <= x1 < dimension: 
+            if grid.can_i_move_here([x1, y]):
+                return True 
             else: 
                 return False 
         else: 
@@ -75,13 +68,11 @@ def check_diagonal(position, grid, direction):
     dimension = len(grid.grid)
 
     if direction == 'UL':
-        x1 = x - 1 
-        x2 = x - 2 
-        y1 = y - 1
-        y2 = y - 2
+        x1 = x - 2 
+        y1 = y - 2
 
-        if all(0 <= x < dimension for x in [x1, x2, y1, y2]):
-            if all(grid.can_i_move_here(coords) for coords in [[x1, y1], [x2, y2]]):
+        if all(0 <= coord < dimension for coord in [x1, y1]):
+            if grid.can_i_move_here([x1, y1]):
                 return True  
 
             else:
@@ -90,13 +81,11 @@ def check_diagonal(position, grid, direction):
             return False 
 
     if direction == 'DL':
-        x1 = x + 1 
-        x2 = x + 2 
-        y1 = y - 1
-        y2 = y - 2
+        x1 = x + 2 
+        y1 = y - 2
 
-        if all(0 <= x < dimension for x in [x1, x2, y1, y2]):
-            if all(grid.can_i_move_here(coords) for coords in [[x1, y1], [x2, y2]]):
+        if all(0 <= coord < dimension for coord in [x1, y1]):
+            if grid.can_i_move_here([x1, y1]):
                 return True  
 
             else:
@@ -105,13 +94,11 @@ def check_diagonal(position, grid, direction):
             return False 
 
     if direction == 'DR':
-        x1 = x + 1 
-        x2 = x + 2 
-        y1 = y + 1
-        y2 = y + 2
+        x1 = x + 2 
+        y1 = y + 2
 
-        if all(0 <= x < dimension for x in [x1, x2, y1, y2]):
-            if all(grid.can_i_move_here(coords) for coords in [[x1, y1], [x2, y2]]):
+        if all(0 <= coord < dimension for coord in [x1, y1]):
+            if grid.can_i_move_here([x1, y1]):
                 return True  
 
             else:
@@ -121,13 +108,11 @@ def check_diagonal(position, grid, direction):
 
 
     if direction == 'UR':
-        x1 = x - 1 
-        x2 = x - 2 
-        y1 = y + 1
-        y2 = y + 2
+        x1 = x - 2 
+        y1 = y + 2
 
-        if all(0 <= x < dimension for x in [x1, x2, y1, y2]):
-            if all(grid.can_i_move_here(coords) for coords in [[x1, y1], [x2, y2]]):
+        if all(0 <= coord < dimension for coord in [x1, y1]):
+            if grid.can_i_move_here([x1, y1]):
                 return True  
 
             else:
