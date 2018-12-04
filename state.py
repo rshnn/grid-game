@@ -1,4 +1,3 @@
-import numpy as np 
 from grid import Grid 
 import check_moves
 import do_moves 
