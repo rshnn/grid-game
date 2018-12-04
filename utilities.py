@@ -68,5 +68,7 @@ def plot_some_random_solution_idc_which_one(solutions):
                                                                        len(solutions[i][1])
                                                                        )
     grid = solutions[i][1][j].grid.grid
+    path = solutions[i][1][j].path 
+
     figure = plot_solved_grid(grid, title)
-    return figure 
+    return figure, path  
