@@ -3,10 +3,11 @@ import seaborn as sns
 import numpy as np 
 
 
-def recursive_run(state, solved):
+def recursive_run(state, solved, count):
 
     if state.grid.solved(): 
-        return True, state, solved
+        count += 1
+        return True, state, solved, count
 
     else: 
         for direction in "U L D R UR UL DR DL".split():
@@ -14,20 +15,21 @@ def recursive_run(state, solved):
                 continue
             else: 
                 new_state = state.apply_move(direction)
-                out, s, solved = recursive_run(new_state, solved)
+                out, s, solved, count = recursive_run(new_state, solved, count)
                 if out is False: 
                     continue
                 else: 
                     solved.append(s)
                     continue
 
-    return False, state, solved
+    count += 1
+    return False, state, solved, count 
 
 
 def try_run(starting_coords):
     s0 = State(starting_coords)
-    out, state, solved = recursive_run(s0, [])
-    return out, state, solved
+    out, state, solved, count = recursive_run(s0, [], 0)
+    return out, state, solved, count 
 
 
 def solve_for_solutions(log=True):
@@ -38,12 +40,12 @@ def solve_for_solutions(log=True):
             if log: 
                 print("Solving for initial coords: ({}, {})...".format(i, j), end='')
 
-            out, final_state, solution_states = try_run([i, j])
+            out, final_state, solution_states, count = try_run([i, j])
 
             if log: 
                 print('done')
 
-            solved.append(([i, j], solution_states))
+            solved.append(([i, j], solution_states, count))
 
     return solved 
 
